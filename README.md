@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Loja Profissional</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: auto; }
+        .cadastro { background: white; padding: 25px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .grid-produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
+        
+        /* Card Ajustado */
+        .card { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 18px; 
+            text-align: center; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); 
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza tudo no meio */
+        }
+
+        .card img { width: 100%; height: 200px; object-fit: contain; margin-bottom: 15px; }
+        .card h3 { font-size: 1.2em; margin: 10px 0; color: #2d3436; width: 100%; }
+        .card .preco { color: #2ecc71; font-weight: bold; font-size: 1.4em; margin-bottom: 15px; width: 100%; }
+        
+        /* BOTÃO DE COMPRA CENTRALIZADO E SEM SOBRAS */
+        .btn-buy { 
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); 
+            color: white; 
+            border: none; 
+            padding: 12px 0; /* Padding vertical apenas */
+            cursor: pointer; 
+            width: 100%; /* Ocupa a largura disponível do card */
+            max-width: 200px; /* Limita o tamanho para não esticar demais */
+            border-radius: 50px; 
+            font-weight: bold; 
+            text-decoration: none; 
+            font-size: 1em;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
+            transition: 0.3s;
+            display: block;
+            margin: 0 auto 10px auto; /* Centraliza e dá margem embaixo */
+        }
+
+        .btn-buy:hover { transform: scale(1.02); }
+
+        /* Inputs e outros botões */
+        input { padding: 12px; margin: 8px 0; width: 100%; border: 1px solid #dfe6e9; border-radius: 8px; box-sizing: border-box; }
+        .btn-add { background: #007bff; color: white; border: none; padding: 15px; cursor: pointer; width: 100%; border-radius: 8px; font-weight: bold; margin-top: 10px; }
+        .btn-delete { background: none; color: #ff7675; border: none; cursor: pointer; font-size: 0.85em; text-decoration: underline; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="cadastro">
+        <h2>🚀 Configurar Minha Loja</h2>
+        <input type="number" id="meuZap" placeholder="WhatsApp (Ex: 5511999999999)">
+        <hr>
+        <input type="text" id="nome" placeholder="Nome do Produto">
+        <input type="number" id="preco" placeholder="Preço (R$)">
+        <input type="text" id="foto" placeholder="Link da Imagem">
+        <button class="btn-add" onclick="salvar()">Adicionar à Vitrine</button>
+    </div>
+
+    <div id="vitrine" class="grid-produtos"></div>
+</div>
+
+<script>
+    function carregar() {
+        const produtos = JSON.parse(localStorage.getItem('minhaLoja')) || [];
+        const zap = localStorage.getItem('meuZap') || "";
+        document.getElementById('meuZap').value = zap;
+        const vitrine = document.getElementById('vitrine');
+        vitrine.innerHTML = '';
+
+        produtos.forEach((p, index) => {
+            const msg = `Olá! Quero comprar: ${p.nome}`;
+            const linkZap = `https://wa.me/5514991192528?text=${encodeURIComponent(msg)}`;
+
+            vitrine.innerHTML += `
+                <div class="card">
+                    <img src="${p.foto}" alt="Produto">
+                    <h3>${p.nome}</h3>
+                    <span class="preco">R$ ${p.preco}</span>
+                    <a href="${linkZap}" target="_blank" class="btn-buy">Comprar agora</a>
+                    <button class="btn-delete" onclick="remover(${index})">Remover</button>
+                </div>
+            `;
+        });
+    }
+
+    function salvar() {
+        const nome = document.getElementById('nome').value;
+        const preco = document.getElementById('preco').value;
+        const foto = document.getElementById('foto').value;
+        const zap = document.getElementById('meuZap').value;
+
+        if (nome && preco && zap) {
+            const produtos = JSON.parse(localStorage.getItem('minhaLoja')) || [];
+            produtos.push({ nome, preco, foto });
+            localStorage.setItem('minhaLoja', JSON.stringify(produtos));
+            localStorage.setItem('meuZap', zap);
+            carregar();
+            document.getElementById('nome').value = '';
+            document.getElementById('preco').value = '';
+            document.getElementById('foto').value = '';
+        } else {
+            alert("Preencha tudo!");
+        }
+    }
+
+    function remover(index) {
+        const produtos = JSON.parse(localStorage.getItem('minhaLoja'));
+        produtos.splice(index, 1);
+        localStorage.setItem('minhaLoja', JSON.stringify(produtos));
+        carregar();
+    }
+
+    carregar();
+</script>
+</body>
+</html>
