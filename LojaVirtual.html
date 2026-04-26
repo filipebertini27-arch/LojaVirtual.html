@@ -1,22 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Loja Profissional</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: auto; }
+        .cadastro { background: white; padding: 25px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .grid-produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 18px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); display: flex; flex-direction: column; align-items: center; }
+        .card img { width: 100%; height: 200px; object-fit: contain; border-radius: 10px; }
+        .card h3 { margin: 15px 0 5px; color: #2d3436; }
+        .preco { color: #2ecc71; font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
+        .btn-buy { background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; text-decoration: none; padding: 12px 25px; border-radius: 50px; font-weight: bold; width: 80%; }
+        input, button { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { background: #0984e3; color: white; border: none; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body onload="carregar()">
+
+<div class="container">
+    <div class="cadastro">
+        <h2>Configurar Minha Loja</h2>
+        <input type="text" id="nome" placeholder="Nome do Produto">
+        <input type="text" id="preco" placeholder="Preço (Ex: 3.500)">
+        <input type="text" id="foto" placeholder="Link da Foto do Produto">
+        <button onclick="salvar()">Adicionar à Vitrine</button>
+    </div>
+
+    <div id="vitrine" class="grid-produtos"></div>
+</div>
+
+<script>
+function salvar() {
+    const p = {
+        nome: document.getElementById('nome').value,
+        preco: document.getElementById('preco').value,
+        foto: document.getElementById('foto').value
+    };
+    let produtos = JSON.parse(localStorage.getItem('minhaLoja')) || [];
+    produtos.push(p);
+    localStorage.setItem('minhaLoja', JSON.stringify(produtos));
+    location.reload();
+}
+
 function carregar() {
-    // 1. Produtos que tu quiseres que apareçam para TODO O MUNDO (fixos)
     const produtosPadrao = [
         {
             nome: "PlayStation",
             preco: "3.500",
-            foto: "https://guesseu.scene7.com/is/image/GuessEU/FL6PRLELE12-WHITE?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;ar=7:10" 
+            foto: "https://guesseu.scene7.com/is/image/GuessEU/FL6PRLELE12-WHITE?wid=700&fmt=jpeg&qlt=80&ar=7:10" 
         }
     ];
 
-    // 2. Pega também o que for cadastrado no telemóvel (opcional)
     const salvos = JSON.parse(localStorage.getItem('minhaLoja')) || [];
-    const produtos = [...produtosPadrao, ...salvos];
-
-    const zap = "5514991192528"; // Teu número fixo para os clientes
+    const todosProdutos = [...produtosPadrao, ...salvos];
+    const zap = "5514991192528";
     const vitrine = document.getElementById('vitrine');
+    
     vitrine.innerHTML = '';
 
-    produtos.forEach((p) => {
+    todosProdutos.forEach((p) => {
         const msg = `Olá! Tenho interesse no ${p.nome}`;
         const linkZap = `https://wa.me/${zap}?text=${encodeURIComponent(msg)}`;
         
@@ -25,8 +70,12 @@ function carregar() {
                 <img src="${p.foto}" alt="Produto">
                 <h3>${p.nome}</h3>
                 <span class="preco">R$ ${p.preco}</span>
-        <a href='${linkZap}' target='_blank' class='btn-buy'>Comprar agora</a>
-    </div>
-`;
+                <a href="${linkZap}" target="_blank" class="btn-buy">Comprar agora</a>
+            </div>
+        `;
+    });
+}
+</script>
 
-         
+</body>
+</html>
