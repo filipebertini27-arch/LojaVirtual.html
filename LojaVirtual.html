@@ -29,7 +29,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE OVERLAY ── */
     body::before {
       content: '';
       position: fixed; inset: 0;
@@ -37,7 +36,6 @@
       pointer-events: none; z-index: 0; opacity: .5;
     }
 
-    /* ── NAVBAR ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -74,7 +72,6 @@
     }
     .nav-phone svg { width:15px; height:15px; fill:var(--cyan); }
 
-    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column;
@@ -174,7 +171,6 @@
       50%      { transform: translateY(-18px); }
     }
 
-    /* ── STATS BAR ── */
     .stats {
       display: flex; justify-content: center; gap: 4rem;
       flex-wrap: wrap;
@@ -195,7 +191,6 @@
       text-transform: uppercase;
     }
 
-    /* ── PRODUCTS ── */
     section.products {
       padding: 6rem 5vw;
       position: relative; z-index: 1;
@@ -315,7 +310,6 @@
     .btn-wish:hover { border-color: #ff3c6e; color: #ff3c6e; }
     .btn-wish svg { width: 18px; height: 18px; }
 
-    /* ── FEATURES ── */
     section.features {
       padding: 5rem 5vw;
       background: rgba(13,20,34,.7);
@@ -356,43 +350,6 @@
       font-family: 'Inter', sans-serif; line-height: 1.55;
     }
 
-    /* ── WHATSAPP FLOAT ── */
-    .wa-float {
-      position: fixed; bottom: 28px; right: 28px; z-index: 200;
-      width: 60px; height: 60px;
-      background: #25d366;
-      border-radius: 50%; border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 24px rgba(37,211,102,.5);
-      animation: wa-pulse 2.5s ease-in-out infinite;
-      text-decoration: none;
-    }
-    .wa-float svg { width: 32px; height: 32px; fill: #fff; }
-    @keyframes wa-pulse {
-      0%,100% { box-shadow: 0 4px 24px rgba(37,211,102,.5); }
-      50%      { box-shadow: 0 4px 40px rgba(37,211,102,.8); }
-    }
-
-    /* ── CONTACT STRIP ── */
-    .contact-strip {
-      text-align: center; padding: 4rem 5vw;
-      background: linear-gradient(135deg, rgba(0,170,255,.08), rgba(0,229,255,.04));
-    }
-    .contact-strip h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.5rem; letter-spacing: 3px;
-      margin-bottom: .7rem;
-    }
-    .contact-strip p { color: var(--muted); font-family: 'Inter', sans-serif; margin-bottom: 1.5rem; }
-    .contact-strip .phone-link {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.2rem; letter-spacing: 3px;
-      color: var(--cyan); text-shadow: 0 0 20px rgba(0,229,255,.4);
-      text-decoration: none;
-    }
-    .contact-strip .phone-link:hover { text-shadow: 0 0 35px rgba(0,229,255,.7); }
-
-    /* ── FOOTER ── */
     footer {
       background: rgba(8,12,20,.95);
       border-top: 1px solid var(--border);
@@ -403,14 +360,12 @@
     .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--blue); }
     footer p { color: var(--muted); font-size: .8rem; }
 
-    /* ── RESPONSIVE ── */
     @media(max-width:640px) {
       nav ul { display: none; }
       .stats { gap: 2rem; }
       .hero h1 { font-size: 3.2rem; }
     }
 
-    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -424,32 +379,28 @@
 </head>
 <body>
 
-<!-- ── NAVBAR ── -->
 <nav>
   <div class="logo">Nex<span>Play</span></div>
   <ul>
     <li><a href="#products">Produtos</a></li>
     <li><a href="#features">Diferenciais</a></li>
-    <li><a href="#contact">Contato</a></li>
   </ul>
   <div class="nav-phone">
     <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-    (55) 14 99119-2528
+    Ofertas Oficiais
   </div>
 </nav>
 
-<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-bg-ring"></div>
   <div class="hero-bg-ring"></div>
   <div class="hero-bg-ring"></div>
 
-  <div class="hero-tag fade-up">⚡ Loja Oficial PS5 · Estoque Disponível</div>
+  <div class="hero-tag fade-up">⚡ Melhores Preços da Nova Geração</div>
   <h1 class="fade-up delay-1">PLAY<br>STATION 5</h1>
-  <p class="fade-up delay-2">A nova geração está aqui. Velocidade SSD ultrarrápida, gráficos 4K e o revolucionário DualSense™ — tudo em um único console.</p>
+  <p class="fade-up delay-2">Encontramos as melhores ofertas para você. Segurança total na compra através de nossos parceiros oficiais como Amazon e Magalu.</p>
   <div class="hero-cta fade-up delay-3">
-    <a href="#products" class="btn-primary">Ver Modelos</a>
-    <a href="https://wa.me/5514991192528?text=Olá!%20Tenho%20interesse%20em%20um%20PlayStation%205.%20Pode%20me%20ajudar?" target="_blank" class="btn-outline">Falar no WhatsApp</a>
+    <a href="#products" class="btn-primary">Ver Ofertas Hoje</a>
   </div>
 
   <div class="hero-img fade-up delay-4">
@@ -457,7 +408,6 @@
   </div>
 </section>
 
-<!-- ── STATS ── -->
 <div class="stats">
   <div class="stat-item">
     <div class="stat-num">4K</div>
@@ -471,96 +421,46 @@
     <div class="stat-num">825GB</div>
     <div class="stat-label">SSD Ultra HD</div>
   </div>
-  <div class="stat-item">
-    <div class="stat-num">3D</div>
-    <div class="stat-label">Áudio Tempest</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">+500</div>
-    <div class="stat-label">Jogos Disponíveis</div>
-  </div>
 </div>
 
-<!-- ── PRODUCTS ── -->
 <section class="products" id="products">
   <div class="section-header">
-    <h2>Nossos Modelos</h2>
-    <p>Escolha o PlayStation 5 ideal para você e pague com segurança</p>
+    <h2>Confira os Modelos</h2>
+    <p>Clique para ver detalhes e comprar com segurança na loja oficial</p>
   </div>
-
-  <div class="products-grid" id="products-grid">
-    <!-- Gerado via JS -->
-  </div>
+  <div class="products-grid" id="products-grid"></div>
 </section>
 
-<!-- ── FEATURES ── -->
 <section class="features" id="features">
   <div class="section-header">
-    <h2>Por que Comprar Aqui?</h2>
-    <p>Qualidade, segurança e atendimento que você merece</p>
+    <h2>Por que usar o NexPlay?</h2>
+    <p>Sua ponte segura para a nova geração</p>
   </div>
   <div class="features-grid">
     <div class="feature-item">
       <div class="feature-icon">🛡️</div>
-      <h4>Garantia Oficial</h4>
-      <p>1 ano de garantia em todos os produtos + suporte pós-venda dedicado.</p>
+      <h4>Compra Segura</h4>
+      <p>Nós apenas listamos produtos vendidos e entregues por lojas gigantes e confiáveis.</p>
     </div>
     <div class="feature-item">
       <div class="feature-icon">🚀</div>
-      <h4>Entrega Rápida</h4>
-      <p>Enviamos em até 24h. Rastreamento em tempo real pelo WhatsApp.</p>
+      <h4>Melhor Preço</h4>
+      <p>Monitoramos o mercado para trazer sempre o menor valor disponível no momento.</p>
     </div>
     <div class="feature-item">
       <div class="feature-icon">💳</div>
-      <h4>Pagamento Seguro</h4>
-      <p>Pix, cartão em até 12x e boleto. Dados protegidos com criptografia SSL.</p>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon">💬</div>
-      <h4>Suporte 24/7</h4>
-      <p>Nossa equipe está disponível todos os dias pelo WhatsApp para te ajudar.</p>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon">📦</div>
-      <h4>Produto Lacrado</h4>
-      <p>Todos os consoles são novos e lacrados, diretamente do fabricante.</p>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon">🔄</div>
-      <h4>Troca Facilitada</h4>
-      <p>Troca ou devolução em até 7 dias sem burocracia, conforme o CDC.</p>
+      <h4>Parcelamento</h4>
+      <p>Aproveite as condições de parcelamento exclusivas dos nossos parceiros oficiais.</p>
     </div>
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
-<div class="contact-strip" id="contact">
-  <h3>Fale Conosco Agora</h3>
-  <p>Tire suas dúvidas, faça seu pedido ou negocie diretamente com a gente.</p>
-  <a class="phone-link" href="tel:+5514991192528">(55) 14 99119-2528</a>
-  <br/><br/>
-  <a class="btn-primary" style="display:inline-block;"
-     href="https://wa.me/5514991192528?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20o%20PlayStation%205."
-     target="_blank">
-    💬 Chamar no WhatsApp
-  </a>
-</div>
-
-<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-logo">NexPlay</div>
-  <p>© 2025 NexPlay Store · Todos os direitos reservados</p>
-  <p style="color:var(--muted);font-size:.8rem;">(55) 14 99119-2528</p>
+  <p>© 2026 NexPlay Store · Consultoria de Ofertas PS5</p>
 </footer>
 
-<!-- ── WhatsApp Float ── -->
-<a class="wa-float" href="https://wa.me/5514991192528?text=Olá!%20Tenho%20interesse%20em%20um%20PlayStation%205!" target="_blank" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-</a>
-
-<!-- ── JS: PRODUCTS DB ── -->
 <script>
-  // ── BANCO DE DADOS DE PRODUTOS ──
   const products = [
     {
       id: 1,
@@ -568,10 +468,10 @@
       badge: "new",
       badgeText: "Novo",
       img: "https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21",
-      desc: "Console PlayStation 5 com leitor de disco Ultra HD Blu-ray™. Viva o futuro dos jogos com carregamento ultrarrápido.",
+      desc: "Console com leitor de disco Ultra HD Blu-ray™. Encontramos o melhor preço na Amazon para você.",
       price: 3899.90,
       priceOld: 4499.90,
-      sku: "PS5-STD-001",
+      link: "https://amzn.to/3VjU5XF" // EXEMPLO DE LINK DE AFILIADO
     },
     {
       id: 2,
@@ -579,21 +479,10 @@
       badge: "sale",
       badgeText: "Oferta",
       img: "https://gmedia.playstation.com/is/image/SIEPDC/ps5-digital-product-thumbnail-01-en-14sep21",
-      desc: "Sem leitor de disco, 100% digital. Mais fino, mais leve e com o mesmo poder de processamento do modelo padrão.",
+      desc: "Sem leitor de disco, 100% digital. Confira a disponibilidade imediata no parceiro.",
       price: 3299.90,
       priceOld: 3899.90,
-      sku: "PS5-DIG-002",
-    },
-    {
-      id: 3,
-      name: "PS5 + DualSense Branco",
-      badge: "hot",
-      badgeText: "🔥 Hot",
-      img: "https://gmedia.playstation.com/is/image/SIEPDC/dualsense-product-thumbnail-01-en-14sep21",
-      desc: "Bundle exclusivo com PS5 Standard + controle DualSense™ extra branco. Jogue com um amigo do primeiro dia!",
-      price: 4499.90,
-      priceOld: 5199.90,
-      sku: "PS5-BND-003",
+      link: "https://amzn.to/3VjU5XF"
     },
     {
       id: 4,
@@ -601,47 +490,17 @@
       badge: "new",
       badgeText: "Novo",
       img: "https://gmedia.playstation.com/is/image/SIEPDC/ps5-slim-product-thumbnail-01-en-14sep21?$800px--t$",
-      desc: "Design revisado, 30% mais compacto. Mesmo desempenho de sempre em um formato ainda mais elegante.",
+      desc: "O novo design compacto de 2024. Já disponível para entrega rápida.",
       price: 3699.90,
       priceOld: 4199.90,
-      sku: "PS5-SLM-004",
-    },
-    {
-      id: 5,
-      name: "PS5 + Spider-Man 2",
-      badge: "hot",
-      badgeText: "🔥 Hot",
-      img: "https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21",
-      desc: "PlayStation 5 Standard com Marvel's Spider-Man 2 incluído. Seu herói favorito no poder da nova geração.",
-      price: 4199.90,
-      priceOld: 4899.90,
-      sku: "PS5-SPD-005",
-    },
-    {
-      id: 6,
-      name: "PS5 + God of War Ragnarök",
-      badge: "sale",
-      badgeText: "Oferta",
-      img: "https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21",
-      desc: "O épico God of War Ragnarök acompanha este console em edição especial. Uma aventura nórdica inesquecível.",
-      price: 4349.90,
-      priceOld: 4999.90,
-      sku: "PS5-GOW-006",
-    },
+      link: "https://amzn.to/3VjU5XF"
+    }
   ];
 
-  // ── FORMATA PREÇO ──
   const fmt = (v) => v.toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
-
-  // ── MONTA O GRID ──
   const grid = document.getElementById('products-grid');
 
   products.forEach(p => {
-    const waMsg = encodeURIComponent(
-      `Olá! Tenho interesse em comprar: ${p.name} (${p.sku}) — ${fmt(p.price)}. Pode me ajudar?`
-    );
-    const waLink = `https://wa.me/5514991192528?text=${waMsg}`;
-
     const badgeClass = { new:'badge-new', sale:'badge-sale', hot:'badge-hot' }[p.badge];
 
     grid.innerHTML += `
@@ -658,30 +517,13 @@
             <span class="price-old">${fmt(p.priceOld)}</span>
           </div>
           <div class="card-footer">
-            <a class="btn-buy" href="${waLink}" target="_blank">🛒 Comprar Agora</a>
-            <button class="btn-wish" onclick="toggleWish(this)" aria-label="Favoritar">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-              </svg>
-            </button>
+            <a class="btn-buy" href="${p.link}" target="_blank">🛒 Ver na Loja Oficial</a>
           </div>
         </div>
       </div>
     `;
   });
 
-  // ── FAVORITAR ──
-  function toggleWish(btn) {
-    const svg = btn.querySelector('svg');
-    const on = btn.dataset.on === '1';
-    btn.dataset.on = on ? '0' : '1';
-    svg.style.fill = on ? 'none' : '#ff3c6e';
-    svg.style.stroke = on ? 'currentColor' : '#ff3c6e';
-    btn.style.borderColor = on ? '' : '#ff3c6e';
-    btn.style.color = on ? '' : '#ff3c6e';
-  }
-
-  // ── INTERSECTION OBSERVER (animação ao scroll) ──
   const cards = document.querySelectorAll('.product-card, .feature-item, .stat-item');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
