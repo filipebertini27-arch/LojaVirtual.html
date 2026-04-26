@@ -33,48 +33,49 @@
 </div>
 
 <script>
-function salvar() {
-    const p = {
-        nome: document.getElementById('nome').value,
-        preco: document.getElementById('preco').value,
-        foto: document.getElementById('foto').value
-    };
-    let produtos = JSON.parse(localStorage.getItem('minhaLoja')) || [];
-    produtos.push(p);
-    localStorage.setItem('minhaLoja', JSON.stringify(produtos));
-    location.reload();
-}
-
-function carregar() {
-    const produtosPadrao = [
-        {
-            nome: "PlayStation",
-            preco: "3.500",
-            foto: "https://m.media-amazon.com/images/I/51eO3L2726L._AC_SL1000_.jpg",
+    function salvar() {
+        const p = {
+            nome: document.getElementById('nome').value,
+            preco: document.getElementById('preco').value,
+            foto: document.getElementById('foto').value
         };
-    ];
+        let produtos = JSON.parse(localStorage.getItem('minhaLoja')) || [];
+        produtos.push(p);
+        localStorage.setItem('minhaLoja', JSON.stringify(produtos));
+        location.reload();
+    }
 
-    const salvos = JSON.parse(localStorage.getItem('minhaLoja')) || [];
-    const todosProdutos = [...produtosPadrao, ...salvos];
-    const zap = "5514991192528";
-    const vitrine = document.getElementById('vitrine');
-    
-    vitrine.innerHTML = '';
+    function carregar() {
+        // Produtos que aparecem para TODOS os clientes (Oficiais)
+        const produtosPadrao = [
+            {
+                nome: "PlayStation 5",
+                preco: "3.500",
+                foto: "https://m.media-amazon.com/images/I/51eO3L2726L._AC_SL1000_.jpg"
+            }
+        ];
 
-    todosProdutos.forEach((p) => {
-        const msg = `Olá! Tenho interesse no ${p.nome}`;
-        const linkZap = `https://wa.me/${zap}?text=${encodeURIComponent(msg)}`;
-        
-        vitrine.innerHTML += `
-            <div class="card">
-                <img src="${p.foto}" alt="Produto">
-                <h3>${p.nome}</h3>
-                <span class="preco">R$ ${p.preco}</span>
-                <a href="${linkZap}" target="_blank" class="btn-buy">Comprar agora</a>
-            </div>
-        `;
-    });
-}
+        const salvos = JSON.parse(localStorage.getItem('minhaLoja')) || [];
+        const todosProdutos = [...produtosPadrao, ...salvos];
+        const zap = "5514991192528";
+        const vitrine = document.getElementById('vitrine');
+
+        vitrine.innerHTML = '';
+
+        todosProdutos.forEach((p) => {
+            const msg = `Olá! Tenho interesse no ${p.nome}`;
+            const linkZap = `https://wa.me/${zap}?text=${encodeURIComponent(msg)}`;
+
+            vitrine.innerHTML += `
+                <div class="card">
+                    <img src="${p.foto}" alt="Produto">
+                    <h3>${p.nome}</h3>
+                    <span class="preco">R$ ${p.preco}</span>
+                    <a href="${linkZap}" target="_blank" class="btn-buy">Comprar agora</a>
+                </div>
+            `;
+        });
+    }
 </script>
 
 </body>
