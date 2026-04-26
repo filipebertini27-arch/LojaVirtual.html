@@ -13,7 +13,7 @@
         .card img { width: 100%; height: 200px; object-fit: contain; border-radius: 10px; }
         .card h3 { margin: 15px 0 5px; color: #2d3436; }
         .preco { color: #2ecc71; font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
-        .btn-buy { background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; text-decoration: none; padding: 12px 25px; border-radius: 50px; font-weight: bold; width: 80%; }
+        .btn-buy { background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; text-decoration: none; padding: 12px 25px; border-radius: 50px; font-weight: bold; width: 80%; display: inline-block; }
         input, button { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
         button { background: #0984e3; color: white; border: none; cursor: pointer; font-weight: bold; }
     </style>
@@ -33,6 +33,7 @@
 </div>
 
 <script>
+    // Função para o dono da loja adicionar itens extras (ficam salvos só no navegador dele)
     function salvar() {
         const p = {
             nome: document.getElementById('nome').value,
@@ -46,7 +47,7 @@
     }
 
     function carregar() {
-        // PRODUTOS FIXOS (Aparecem para todos os clientes)
+        // PRODUTOS QUE APARECEM PARA TODO MUNDO (PÚBLICO)
         const produtosPadrao = [
             {
                 nome: "PlayStation 5",
@@ -57,21 +58,23 @@
 
         const salvos = JSON.parse(localStorage.getItem('minhaLoja')) || [];
         const todosProdutos = [...produtosPadrao, ...salvos];
-        const zap = "5514991192528";
+        
+        // SEU WHATSAPP
+        const meuZap = "5514991192528";
         const vitrine = document.getElementById('vitrine');
 
         vitrine.innerHTML = '';
 
         todosProdutos.forEach((p) => {
-            const msg = `Olá! Tenho interesse no ${p.nome}`;
-            const linkZap = `https://wa.me/${zap}?text=${encodeURIComponent(msg)}`;
+            const mensagem = `Olá! Tenho interesse no ${p.nome} pelo valor de R$ ${p.preco}`;
+            const linkWhatsApp = `https://wa.me/${meuZap}?text=${encodeURIComponent(mensagem)}`;
 
             vitrine.innerHTML += `
                 <div class="card">
-                    <img src="${p.foto}" alt="Produto">
+                    <img src="${p.foto}" alt="${p.nome}">
                     <h3>${p.nome}</h3>
                     <span class="preco">R$ ${p.preco}</span>
-                    <a href="${linkZap}" target="_blank" class="btn-buy">Comprar agora</a>
+                    <a href="${linkWhatsApp}" target="_blank" class="btn-buy">Comprar agora</a>
                 </div>
             `;
         });
