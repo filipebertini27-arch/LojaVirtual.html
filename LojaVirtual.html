@@ -7,79 +7,50 @@
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
         .container { max-width: 1000px; margin: auto; }
-        .cadastro { background: white; padding: 25px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .grid-produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 20px; border-radius: 18px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); display: flex; flex-direction: column; align-items: center; }
+        .card { background: white; padding: 20px; border-radius: 18px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
         .card img { width: 100%; height: 200px; object-fit: contain; border-radius: 10px; }
-        .card h3 { margin: 15px 0 5px; color: #2d3436; }
-        .preco { color: #2ecc71; font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
-        .btn-buy { background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; text-decoration: none; padding: 12px 25px; border-radius: 50px; font-weight: bold; width: 80%; display: inline-block; }
-        input, button { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        button { background: #0984e3; color: white; border: none; cursor: pointer; font-weight: bold; }
+        .preco { color: #2ecc71; font-weight: bold; font-size: 1.2em; display: block; margin: 10px 0; }
+        .btn-buy { background: #25d366; color: white; text-decoration: none; padding: 12px 25px; border-radius: 50px; font-weight: bold; display: inline-block; }
     </style>
 </head>
 <body onload="carregar()">
 
 <div class="container">
-    <div class="cadastro">
-        <h2>Configurar Minha Loja</h2>
-        <input type="text" id="nome" placeholder="Nome do Produto">
-        <input type="text" id="preco" placeholder="Preço (Ex: 3.500)">
-        <input type="text" id="foto" placeholder="Link da Foto do Produto">
-        <button onclick="salvar()">Adicionar à Vitrine</button>
-    </div>
-
+    <h2 style="text-align:center">Vitrine de Produtos</h2>
     <div id="vitrine" class="grid-produtos"></div>
 </div>
 
 <script>
-    // Função para o dono da loja adicionar itens extras (ficam salvos só no navegador dele)
-    function salvar() {
-        const p = {
-            nome: document.getElementById('nome').value,
-            preco: document.getElementById('preco').value,
-            foto: document.getElementById('foto').value
-        };
-        let produtos = JSON.parse(localStorage.getItem('minhaLoja')) || [];
-        produtos.push(p);
-        localStorage.setItem('minhaLoja', JSON.stringify(produtos));
-        location.reload();
-    }
-
     function carregar() {
-        // PRODUTOS QUE APARECEM PARA TODO MUNDO (PÚBLICO)
+        // PRODUTO FIXO PARA TODOS OS CLIENTES
         const produtosPadrao = [
             {
                 nome: "PlayStation 5",
                 preco: "3.500",
-                foto: "https://m.media-amazon.com/images/I/51eO3L2726L._AC_SL1000_.jpg"
+                // Link de imagem novo e testado
+                foto: "https://m.media-amazon.com/images/I/51051Hi9R9L._AC_SL1000_.jpg"
             }
         ];
 
-        const salvos = JSON.parse(localStorage.getItem('minhaLoja')) || [];
-        const todosProdutos = [...produtosPadrao, ...salvos];
-        
-        // SEU WHATSAPP
-        const meuZap = "5514991192528";
+        const meuZap = "5514991192528"; // Seu número configurado
         const vitrine = document.getElementById('vitrine');
-
         vitrine.innerHTML = '';
 
-        todosProdutos.forEach((p) => {
-            const mensagem = `Olá! Tenho interesse no ${p.nome} pelo valor de R$ ${p.preco}`;
-            const linkWhatsApp = `https://wa.me/${meuZap}?text=${encodeURIComponent(mensagem)}`;
+        produtosPadrao.forEach((p) => {
+            const msg = encodeURIComponent(`Olá! Quero comprar o ${p.nome} por R$ ${p.preco}`);
+            const linkZap = `https://wa.me/${meuZap}?text=${msg}`;
 
             vitrine.innerHTML += `
                 <div class="card">
-                    <img src="${p.foto}" alt="${p.nome}">
+                    <img src="${p.foto}" alt="PS5">
                     <h3>${p.nome}</h3>
                     <span class="preco">R$ ${p.preco}</span>
-                    <a href="${linkWhatsApp}" target="_blank" class="btn-buy">Comprar agora</a>
+                    <a href="${linkZap}" target="_blank" class="btn-buy">Comprar agora</a>
                 </div>
             `;
         });
     }
 </script>
-
 </body>
 </html>
